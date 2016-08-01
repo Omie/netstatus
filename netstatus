@@ -1,0 +1,6 @@
+#!/bin/bash
+
+. ~/.virtualenvs/ns/bin/activate
+
+/home/omie/netstatus/netstatus.py
+
