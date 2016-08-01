@@ -64,9 +64,7 @@ def perform_logout(session_id):
     }
 
     logout_response = s.post(login_url, data=form_data, headers=headers)
-    if logout_response.status_code != 200:
-        return False
-    return True
+    return logout_response.status_code == 200
 
 def get_status():
     """
