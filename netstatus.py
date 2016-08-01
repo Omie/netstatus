@@ -106,6 +106,8 @@ def get_status():
 
     # grab what is needed
     m = re.search('([0-9])\w+', dsl_uprate)
+    if m is None:
+        return (0, 0, 0, 0)
     uprate = m.group(0)
 
     m = re.search('([0-9])\w+', dsl_downrate)
@@ -116,6 +118,9 @@ def get_status():
 
     # extra dot '.' for ip address
     m = re.search('([0-9.])+', dsl_ipaddr)
+    # connection could be disconnected even though line is connected
+    if m is None:
+        return (uprate, Downrate, uptime, 0)
     ipaddr = m.group(0)
 
     return (uprate, downrate, uptime, ipaddr)
